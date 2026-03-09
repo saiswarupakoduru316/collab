@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div style="width: 400px; margin: 60px auto; 
+            background: rgba(255,255,255,0.9); 
+            padding: 25px; 
+            border-radius: 10px;">
+
+    <h2 style="text-align:center;">Add New Project</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <label>Project Title</label><br>
+        <input type="text" name="title" required style="width:100%; padding:8px;"><br><br>
+
+        <label>Tech Stack</label><br>
+        <input type="text" name="tech_stack" required style="width:100%; padding:8px;"><br><br>
+
+        <label>Team Members Needed</label><br>
+        <input type="number" name="team_members" required style="width:100%; padding:8px;"><br><br>
+
+        <label>Status</label><br>
+        <select name="status" required style="width:100%; padding:8px;">
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+        </select><br><br>
+
+        <label>Upload Document (Optional)</label><br>
+        <input type="file" name="document" style="width:100%;"><br><br>
+
+        <button type="submit" 
+                style="width:100%; padding:10px; 
+                       background:#2c3e50; color:white; 
+                       border:none; border-radius:5px;">
+            Add Project
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+<h2>Group Invitations</h2>
+
+{% if invites %}
+    {% for invite in invites %}
+        <div style="border:1px solid black; padding:10px; margin:10px;">
+            <p>
+                You are invited to join 
+                <strong>{{ invite['group_name'] }}</strong>
+                by {{ invite['owner_name'] }}
+            </p>
+
+            <a href="/accept_invite/{{ invite['id'] }}">Accept</a>
+            <a href="/reject_invite/{{ invite['id'] }}">Reject</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No pending invitations</p>
+{% endif %}

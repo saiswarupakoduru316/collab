@@ -1,0 +1,15 @@
+<h2>My Groups</h2>
+
+{% if groups %}
+    {% for group in groups %}
+        <div style="border:1px solid black; padding:10px; margin:10px;">
+            <h3>{{ group['group_name'] }}</h3>
+            <p>{{ group['description'] }}</p>
+
+            <a href="/group/{{ group['id'] }}">View Group</a>
+            <a href="/group_chat/{{ group['id'] }}">Chat</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>You are not part of any groups yet.</p>
+{% endif %}

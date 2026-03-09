@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>All Projects</h2>
+<form method="GET" action="{{ url_for('view_projects') }}" style="margin-bottom:20px;">
+    <select name="status" onchange="this.form.submit()">
+        <option value="All" {% if selected_status == "All" or not selected_status %}selected{% endif %}>All</option>
+        <option value="In Progress" {% if selected_status == "In Progress" %}selected{% endif %}>In Progress</option>
+        <option value="Completed" {% if selected_status == "Completed" %}selected{% endif %}>Completed</option>
+    </select>
+</form>
+
+{% if projects %}
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Owner</th>
+        <th>Tech Stack</th>
+        <th>Team</th>
+        <th>Status</th>
+        <th>Document</th>
+        <th>Join</th>
+    </tr>
+
+    {% for project in projects %}
+    <tr>
+        <td>{{ project.title }}</td>
+        <td>{{ project.username }}</td>
+        <td>{{ project.tech_stack }}</td>
+        <td>{{ project.team_members }}</td>
+        <td>
+            <span class="status {{ project.status|lower|replace(' ', '-') }}">
+                {{ project.status }}
+            </span>
+        </td>
+        <td>
+            <a href="{{ url_for('uploaded_file', filename=project.document) }}" target="_blank">
+                View
+            </a>
+        </td>
+        <td>
+            {% if project.user_id != session.get('user_id') %}
+                <a href="{{ url_for('send_request', project_id=project.id) }}" class="btn">
+                    Request to Join
+                </a>
+            {% else %}
+                Owner
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No projects available.</p>
+{% endif %}
+
+{% endblock %}

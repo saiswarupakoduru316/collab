@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>My Sent Requests</h2>
+
+{% if requests %}
+<table>
+    <tr>
+        <th>Project</th>
+        <th>Owner</th>
+        <th>Status</th>
+    </tr>
+
+    {% for req in requests %}
+    <tr>
+        <td>{{ req.title }}</td>
+        <td>{{ req.username }}</td>
+        <td>
+            <span class="status {{ req.status|lower }}">
+                {{ req.status }}
+            </span>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No requests sent.</p>
+{% endif %}
+
+{% endblock %}

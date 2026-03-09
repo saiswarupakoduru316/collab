@@ -1,0 +1,10 @@
+<h2>Invite Members</h2>
+
+<form method="POST" action="/invite_members/{{ group_id }}">
+    {% for user in connections %}
+        <input type="checkbox" name="members" value="{{ user[0] }}">
+        {{ user[1] }} <br>
+    {% endfor %}
+    <br>
+    <button type="submit">Send Invites</button>
+</form>

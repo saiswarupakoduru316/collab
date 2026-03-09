@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Collaboration Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>🎓 StudentCollab</h2>
+    {% if session.get('user_id') %}
+    <ul>
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('add_project') }}">Add Project</a></li>
+        <li><a href="{{ url_for('my_projects') }}">My Projects</a></li>
+         <li><a href="{{ url_for('received_requests') }}">My Requests</a></li>
+         <li><a href="{{ url_for('sent_requests') }}">Requests status</a></li>
+        <li><a href="{{ url_for('view_projects') }}">View Projects</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+    {% endif %}
+</nav>
+
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="flash">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>My Projects</h2>
+
+{% if projects %}
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Tech Stack</th>
+        <th>Team</th>
+        <th>Status</th>
+        <th>Document</th>
+    </tr>
+
+    {% for project in projects %}
+    <tr>
+        <td>{{ project.title }}</td>
+        <td>{{ project.tech_stack }}</td>
+        <td>{{ project.team_members }}</td>
+        <td>
+            <span class="status {{ project.status|lower|replace(' ', '-') }}">
+                {{ project.status }}
+            </span>
+        </td>
+        <td>
+            <a href="{{ url_for('uploaded_file', filename=project.document) }}" target="_blank">
+    View
+</a>        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No projects added yet.</p>
+{% endif %}
+
+{% endblock %}

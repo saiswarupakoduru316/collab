@@ -1,0 +1,41 @@
+<h2>Group Chat</h2>
+
+<div style="height:400px; overflow-y:scroll; border:1px solid black; padding:10px;">
+
+{% for msg in messages %}
+    <div style="margin:10px; 
+        {% if msg['sender_id'] == session['user_id'] %}
+            text-align:right;
+        {% else %}
+            text-align:left;
+        {% endif %}
+    ">
+
+        <strong>{{ msg['username'] }}</strong><br>
+
+        {% if msg['message'] %}
+            <p>{{ msg['message'] }}</p>
+        {% endif %}
+
+        {% if msg['file_name'] %}
+            {% if msg['file_name'].endswith(('png','jpg','jpeg','gif')) %}
+                <img src="{{ url_for('static', filename='uploads/' + msg['file_name']) }}" width="150">
+            {% else %}
+                <a href="{{ url_for('static', filename='uploads/' + msg['file_name']) }}" download>
+                    Download {{ msg['file_name'] }}
+                </a>
+            {% endif %}
+        {% endif %}
+
+    </div>
+{% endfor %}
+
+</div>
+
+<hr>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="text" name="message" placeholder="Type message">
+    <input type="file" name="file">
+    <button type="submit">Send</button>
+</form>

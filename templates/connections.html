@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>My Connections</h2>
+
+{% if connections %}
+<ul>
+    {% for user in connections %}
+        <li>{{ user.username }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No connections yet.</p>
+{% endif %}
+
+{% endblock %}

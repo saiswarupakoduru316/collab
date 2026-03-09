@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Join Requests</h2>
+
+{% if requests %}
+<table>
+    <tr>
+        <th>Project</th>
+        <th>Requested By</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for req in requests %}
+    <tr>
+        <td>{{ req.title }}</td>
+        <td>{{ req.username }}</td>
+        <td>{{ req.status }}</td>
+        <td>
+            {% if req.status == "Pending" %}
+                <a href="{{ url_for('update_request', req_id=req.id, action='accept') }}">Accept</a>
+                <a href="{{ url_for('update_request', req_id=req.id, action='reject') }}">Reject</a>
+            {% else %}
+                -
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No requests received.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+.navbar {
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    padding: 30px;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 400px;
+}
+
+input, select {
+    padding: 10px;
+}
+
+button, .btn {
+    padding: 10px;
+    background: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.status.in-progress {
+    color: orange;
+    font-weight: bold;
+}
+
+.status.completed {
+    color: green;
+    font-weight: bold;
+}
+
+.flash {
+    background: #2ecc71;
+    padding: 10px;
+    color: white;
+    margin-bottom: 15px;
+}
+.status.pending {
+    color: orange;
+    font-weight: bold;
+}
+
+.status.accepted {
+    color: green;
+    font-weight: bold;
+}
+
+.status.rejected {
+    color: red;
+    font-weight: bold;
+}
+select {
+    padding: 8px;
+    border-radius: 5px;
+}

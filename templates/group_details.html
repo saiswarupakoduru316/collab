@@ -1,0 +1,17 @@
+<h2>{{ group['group_name'] }}</h2>
+<p>{{ group['description'] }}</p>
+<p><strong>Owner:</strong> {{ group['owner_name'] }}</p>
+
+<hr>
+
+<h3>Members</h3>
+<ul>
+    {% for member in members %}
+        <li>{{ member['username'] }}</li>
+    {% else %}
+        <li>No members yet</li>
+    {% endfor %}
+</ul>
+
+<br>
+<a href="/group_chat/{{ group['id'] }}">Open Group Chat</a>
